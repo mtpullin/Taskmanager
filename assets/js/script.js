@@ -214,7 +214,23 @@ tasks = updatedTaskArr;
 var saveTasks = function() {
   localStorage.setItem("tasks", JSON.stringify(tasks));
 }
+//gets task items from localstorage
 
+//converts tasks from string format back into an array of objects
+
+//iterates through a tasks array and creates task elements on the page from it.
+var loadTasks = function () {
+  var savedTasks = localStorage.getItem("tasks")
+if (!savedTasks) {
+  return false;
+}
+console.log("saved tasks found");
+savedTasks = JSON.parse(savedTasks);
+for (var i = 0; i < savedTasks.length; i++) {
+  createTaskEl(savedTasks[i]);
+}
+}
+loadTasks();
 // Create a new task
 formEl.addEventListener("submit", taskFormHandler);
 
